@@ -1,0 +1,26 @@
+{
+  "Http": {
+    "Port":8080,
+    "GIN": {
+      "ReleaseMode": false,
+      "UseLogger": true,
+      "UseRecovery": true
+    },
+    "ProfilingEnabled": true,
+    "StopTimeout": 5000
+  },
+  "DB": {
+    "ConnectionString": "host=10.3.41.21 port=5432 user=isa dbname=test password=gjGvPHEvZq8PgfL9aBDJ0NmgtJyh2K9Dgzt9fyCp2zX3",
+    "MaxOpenConns": 80,
+    "MaxIdleConns": 9,
+    "LogMode": true
+  },
+  "SwaggerUI": {
+    "PageTitle": "auto-catalog",
+    "Host": "https://testcore.homebank.kz/halykid",
+    "Description": "auto-catalog"
+  },
+  "CatalogUrls": {
+    "Catalog": "https://testapi.someserver.kz/catalog"
+  }
+}
