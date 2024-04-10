@@ -5,6 +5,7 @@ import (
 	"api-catalog-auto/internal/common/logger"
 	"context"
 	"fmt"
+	"github.com/joho/godotenv"
 	"net/http"
 	"strconv"
 	"time"
@@ -72,9 +73,12 @@ func New(cfg *config.Config, handlers *Handlers, log logger.AppLogger) (s Server
 	}
 
 	srv.addSwaggerSettings(&cfg.SwaggerUI)
-	srv.addMetrics()
-
 	srv.routers()
+
+	// Загрузка переменных окружения из файла .env
+	if err := godotenv.Load(); err != nil {
+		return
+	}
 
 	//if cfg.Http.ProfilingEnabled {
 	//	pprof.Register(engine)

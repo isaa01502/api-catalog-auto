@@ -25,7 +25,6 @@ func NewConsent(service service.ICatalog) *Catalog {
 // @Produce json
 // @Success 200 {object} entity.Catalog{}
 // @Router /api/v1/catalog [get]
-// @Security Bearer
 func (c *Catalog) GetCatalog(ctx *gin.Context) {
 	id := ctx.Query("id")
 	res, err := c.service.GetCatalog(id)
@@ -44,9 +43,8 @@ func (c *Catalog) GetCatalog(ctx *gin.Context) {
 // @Tags catalog
 // @Accept json
 // @Produce json
-// @Success 200 {object}
-// @Router /api/v1/catalog [get]
-// @Security Bearer
+// @Success 200 {object} nil
+// @Router /api/v1/catalog [post]
 func (c *Catalog) AddCatalog(ctx *gin.Context) {
 	reqBytes, err := io.ReadAll(ctx.Request.Body)
 	if err != nil {
@@ -71,6 +69,14 @@ func (c *Catalog) AddCatalog(ctx *gin.Context) {
 	return
 }
 
+// UpdateCatalog godoc
+// @Summary Обновить каталог
+// @Description Обновить каталог
+// @Tags catalog
+// @Accept json
+// @Produce json
+// @Success 200 {object} nil
+// @Router /api/v1/catalog [put]
 func (c *Catalog) UpdateCatalog(ctx *gin.Context) {
 	id := ctx.Query("id")
 
@@ -84,6 +90,23 @@ func (c *Catalog) UpdateCatalog(ctx *gin.Context) {
 	return
 }
 
+// DeleteCatalog godoc
+// @Summary Удалить каталог
+// @Description Удалить каталог
+// @Tags catalog
+// @Accept json
+// @Produce json
+// @Success 200 {object} nil
+// @Router /api/v1/catalog [delete]
 func (c *Catalog) DeleteCatalog(ctx *gin.Context) {
+	id := ctx.Query("id")
 
+	err := c.service.DeleteCatalog(id)
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, err.Error())
+		return
+	}
+
+	ctx.JSON(http.StatusOK, nil)
+	return
 }

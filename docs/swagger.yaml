@@ -1,0 +1,69 @@
+definitions:
+  entity.Catalog:
+    properties:
+      id:
+        type: string
+      mark:
+        type: string
+      model:
+        type: string
+      owner:
+        type: string
+      regNum:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /api/v1/catalog:
+    delete:
+      consumes:
+      - application/json
+      description: Удалить каталог
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Удалить каталог
+      tags:
+      - catalog
+    get:
+      consumes:
+      - application/json
+      description: Получить каталог
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.Catalog'
+      summary: Получить каталог
+      tags:
+      - catalog
+    post:
+      consumes:
+      - application/json
+      description: Добавить каталог
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Добавить каталог
+      tags:
+      - catalog
+    put:
+      consumes:
+      - application/json
+      description: Обновить каталог
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Обновить каталог
+      tags:
+      - catalog
+swagger: "2.0"

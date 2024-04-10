@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"git.homebank.kz/homebank-halykid/api-halykid/internal/model"
 	"github.com/gin-gonic/gin"
 )
 
@@ -29,18 +28,4 @@ func GetDeviceID(c *gin.Context) string {
 
 	deviceId = c.GetHeader("DeviceID")
 	return deviceId
-}
-
-func Map(user *model.UserFullInfo) model.UserToFront {
-
-	return model.UserToFront{
-		FirstName:  user.Name,
-		LastName:   user.Surname,
-		Phone:      user.TrustedPhone,
-		BirthDay:   user.BirthDate,
-		Gender:     user.Gender,
-		OpenWayId:  user.OpenWayId,
-		Middlename: user.Middlename,
-		UserId:     user.UserId,
-	}
 }

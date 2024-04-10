@@ -28,7 +28,7 @@ func main() {
 
 	templageRep, err := repository.NewTemplate(db)
 	if err != nil {
-		panic("init autopayment mock error")
+		panic("init auto_catalog mock error")
 	}
 
 	log := logger.New()
